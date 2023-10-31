@@ -1,27 +1,26 @@
-////////////////////////////////////////////
-// JOÃO PAULO DA ROSA E NATÃ DOS SANTOS ////
-////////////////////////////////////////////
+///////////////////////////////////////////////////
+// Alunos: Joï¿½o Paulo da Rosa e Natï¿½ dos Santos  //
+///////////////////////////////////////////////////
+program pilha_palavra;
 
-program PilhaPalabra;
-Uses Crt;
-const
-  MAX_TAMANHO = 25;
+uses
+  Crt;
 
-type
-  NODO = Char;
-  PILHA = record
-    topo: Integer;
-    conteudo: array[1..MAX_TAMANHO] of NODO;
-  end;
+  const MAX_TAMANHO = 25;
 
-var
-  p: PILHA;
-  palavra: string;
-  i, tamanho_palavra: Integer;
+  Type NODO = string;
+       PILHA = Record
+          topo: Integer;
+          conteudo: Array[1..MAX_TAMANHO] of NODO;
+  End;
+  
+var p: PILHA;
+	  palavra: string;
+	  i, tamanho_palavra: Integer;
 
-procedure criaPilha(var arg_pilha: PILHA);
+Procedure criaPilha(var new_pilha: PILHA);
 begin
-  arg_pilha.topo := 0;
+  new_pilha.topo := 0;
 end;
 
 function pop(var arg_pilha: PILHA): NODO;
@@ -47,7 +46,7 @@ begin
 
   Write('Informe uma palavra: ');
   ReadLn(palavra);
-  
+
   // Enche a pilha a partir de cada caracter
   tamanho_palavra := Length(palavra);
   for i := 1 to tamanho_palavra do
@@ -55,12 +54,11 @@ begin
     push(p, palavra[i]);
   end;
 
-  // Enquanto a pilha não estiver vazia realiza o pop
+  // Enquanto a pilha nÃ£o estiver vazia realiza o pop
   Write('Palavra invertida: ');
   while not isVazio(p) do
   begin
     Write(pop(p));
   end;
-  
   ReadLn();
 end.
